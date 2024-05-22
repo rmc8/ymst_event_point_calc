@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../s
 try:
     from lib.point import YmstEventPointCalculator  # noqa: E402
 except ImportError:
-    from ..src.lib.point import YmstEventPointCalculator # noqa: E402
+    from ..src.lib.point import YmstEventPointCalculator  # noqa: E261
 
 
 def test_score_adjustment() -> None:
