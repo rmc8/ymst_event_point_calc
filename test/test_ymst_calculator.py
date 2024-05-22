@@ -5,10 +5,7 @@ from typing import List, Tuple
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-try:
-    from lib.point import YmstEventPointCalculator  # noqa: E402
-except ImportError:
-    from ..src.lib.point import YmstEventPointCalculator  # noqa: E261
+from lib.point import YmstEventPointCalculator  # noqa: E402
 
 
 def test_score_adjustment() -> None:

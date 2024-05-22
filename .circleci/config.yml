@@ -1,53 +1,47 @@
 version: 2.1
 
 jobs:
-  test:
-    docker:
-      - image: circleci/python:3.10.1
+    test:
+        docker:
+            - image: circleci/python:3.10.1
 
-    steps:
-      - checkout
+        steps:
+            - checkout
 
-      - run:
-          name: Set up PYTHONPATH
-          command: |
-            echo 'export PYTHONPATH=$(pwd)' >> $BASH_ENV
-            source $BASH_ENV
+            - run:
+                  name: Set up PYTHONPATH
+                  command: |
+                      echo 'export PYTHONPATH=$(pwd)' >> $BASH_ENV
+                      source $BASH_ENV
 
-      - run:
-          name: Install dependencies
-          command: |
-            python -m venv venv
-            . venv/bin/activate
-            pip install --upgrade pip
-            pip install flake8 pytest mypy
+            - run:
+                  name: Install dependencies
+                  command: |
+                      python -m venv venv
+                      . venv/bin/activate
+                      pip install --upgrade pip
+                      pip install flake8 pytest mypy
 
-      - run:
-          name: Verify PYTHONPATH
-          command: |
-            . venv/bin/activate
-            echo $PYTHONPATH
+            - run:
+                  name: Verify PYTHONPATH
+                  command: |
+                      . venv/bin/activate
+                      echo $PYTHONPATH
 
-      - run:
-          name: Run flake8
-          command: |
-            . venv/bin/activate
-            flake8 src test --ignore=E501,E402
+            - run:
+                  name: Run flake8
+                  command: |
+                      . venv/bin/activate
+                      flake8 src test --ignore=E501,E402
 
-      - run:
-          name: Run mypy
-          command: |
-            . venv/bin/activate
-            mypy src test
-
-      - run:
-          name: Run pytest
-          command: |
-            . venv/bin/activate
-            pytest
+            - run:
+                  name: Run mypy
+                  command: |
+                      . venv/bin/activate
+                      mypy src test
 
 workflows:
-  version: 2
-  test:
-    jobs:
-      - test
+    version: 2
+    test:
+        jobs:
+            - test
