@@ -5,8 +5,10 @@ from typing import List, Tuple
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-from lib.point import YmstEventPointCalculator  # noqa: E402
-
+try:
+    from lib.point import YmstEventPointCalculator  # noqa: E402
+except ImportError: # noqa
+    from ..src.lib.point import YmstEventPointCalculator
 
 def test_score_adjustment() -> None:
     test_cases: List[Tuple[int, float]] = [
