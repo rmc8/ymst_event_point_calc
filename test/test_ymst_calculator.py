@@ -4,6 +4,7 @@ import pytest
 from typing import List, Tuple
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
+sys.path.insert(0, "/home/circleci/project/src/")
 
 from lib.point import YmstEventPointCalculator  # noqa: E402
 
