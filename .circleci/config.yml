@@ -9,6 +9,12 @@ jobs:
             - checkout
 
             - run:
+                  name: Set up PYTHONPATH
+                  command: |
+                      echo 'export PYTHONPATH=src' >> $BASH_ENV
+                      source $BASH_ENV
+
+            - run:
                   name: Install dependencies
                   command: |
                       python -m venv venv
