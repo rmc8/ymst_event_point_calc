@@ -11,7 +11,7 @@ jobs:
             - run:
                   name: Set up PYTHONPATH
                   command: |
-                      echo 'export PYTHONPATH=src' >> $BASH_ENV
+                      echo 'export PYTHONPATH=$(pwd)/src' >> $BASH_ENV
                       source $BASH_ENV
 
             - run:
@@ -21,6 +21,12 @@ jobs:
                       . venv/bin/activate
                       pip install --upgrade pip
                       pip install flake8 pytest mypy
+
+            - run:
+                  name: Verify PYTHONPATH
+                  command: |
+                      . venv/bin/activate
+                      echo $PYTHONPATH
 
             - run:
                   name: Run flake8
