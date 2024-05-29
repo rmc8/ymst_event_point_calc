@@ -1,6 +1,7 @@
 import os
 import sys
 import pytest
+from typing import Optional
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
@@ -23,7 +24,9 @@ TOLERANCE = 2
         (348, 135000000, 135833333),
     ],
 )
-def test_score_calculator(event_point, lower_score, upper_score):
+def test_score_calculator(
+    event_point: int, lower_score: Optional[int], upper_score: Optional[int]
+) -> None:
     calculator = ScoreCalculator(
         event_point=event_point,
         stamina_consumption=1,

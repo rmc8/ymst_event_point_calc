@@ -52,7 +52,7 @@ class ScoreCalculator:
     def get_score(self, is_upper: bool = False) -> Optional[int]:
         adjust = int(is_upper)
         if self.get_base_score_1(_adjuster=adjust) < 0:
-            return
+            return None
         elif self.get_base_score_1(_adjuster=adjust) < Decimal("3e6"):
             return int(self.get_base_score_1(_adjuster=adjust)) - adjust
         elif self.get_base_score_2(_adjuster=adjust) < Decimal("15e6"):
