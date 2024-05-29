@@ -8,6 +8,7 @@ from libs.score import ScoreCalculator
 
 TOLERANCE = 2
 
+
 @pytest.mark.parametrize(
     "event_point, lower_score, upper_score",
     [
