@@ -5,7 +5,7 @@ from typing import List, Tuple
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-from lib.point import YmstEventPointCalculator  # noqa: E402
+from libs.point import YmstEventPointCalculator  # noqa: E402
 
 
 def test_score_adjustment() -> None:
@@ -25,7 +25,7 @@ def test_score_adjustment() -> None:
     for score, expected in test_cases:
         calculator = YmstEventPointCalculator(score, 0, 0.0, 0)
         result = calculator.score_adjustment()
-        assert result == pytest.approx(
+        assert float(result) == pytest.approx(
             expected, rel=1e-9
         ), f"Failed for score: {score}, expected: {expected}, got: {result}"
 
